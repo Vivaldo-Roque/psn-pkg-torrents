@@ -49,7 +49,7 @@ jobs:
         id: info
         run: |
           echo "::set-output name=info::${{ inputs.title }} ${{ inputs.region }} ${{ inputs.console }} ${{ inputs.title-id }}"
-          echo ::set-output name=file_name::$(basename ${{ inputs.pkg-url }})
+          echo ::set-output name=file_name::"${{ inputs.title }}-${{ inputs.region }}-${{ inputs.console }}-${{ inputs.title-id }}.pkg"
           
       - name: Download PKG
         run: aria2c -x 16 -o "${{ steps.info.outputs.file_name }}" "${{ inputs.pkg-url }}"
